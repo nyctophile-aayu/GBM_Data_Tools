@@ -1,0 +1,29 @@
+
+
+from astropy.io import fits
+
+a = fits.open('file_name')
+a.info()
+
+counts = a['spectrum'].data['counts']
+len(counts)
+
+counts[0]
+len(counts[0])
+
+a['spectrum'].data['time']
+a['ebounds'].data
+
+time = a['spectrum'].data['time']
+a['primary'].header
+
+TT = a['primary'].header['TRIGTIME']
+
+time -= TT
+
+time
+
+mask - t = (time > 0) & (time < 10)
+counts.[mask - t]
+mask[]
+

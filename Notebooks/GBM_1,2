@@ -1,0 +1,289 @@
+doc_ayush@astro-A320M-S2H:~/GRB_Analysis/Likelihood_Analysis/GBM_Analysis/2/Files$ cd
+doc_ayush@astro-A320M-S2H:~$ source gbm/bin/activate
+(gbm) doc_ayush@astro-A320M-S2H:~$ cd /home/doc_ayush^C
+(gbm) doc_ayush@astro-A320M-S2H:~$ cd /home/doc_ayush/GRB_Analysis/Likelihood_Analysis/GBM_Analysis/2/Files
+(gbm) doc_ayush@astro-A320M-S2H:~/GRB_Analysis/Likelihood_Analysis/GBM_Analysis/2/Files$ ipython
+Python 3.9.13 | packaged by conda-forge | (main, May 27 2022, 16:58:50) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.4.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from gbm.data import Cspec
+
+/home/doc_ayush/gbm/lib/python3.9/site-packages/gbm/plot/lal_post_subs.py:184: UserWarning: Basemap not installed. Some functionality not available.
+  warnings.warn('Basemap not installed. Some functionality not available.')
+
+In [2]: 
+
+In [2]: cspec = Cspec.open('glg_cspec_n1_bn211211549_v00.pha')
+
+In [3]: cspec
+Out[3]: <gbm.data.phaii.Cspec at 0x7fb0ab02ed00>
+
+In [4]: cspec.time_range
+Out[4]: (-2954.5355199575424, 4002.4552479982376)
+
+In [5]: cspec.trigtime
+Out[5]: 660921004.65092
+
+In [6]: cspec.energy_range
+Out[6]: (4.087215, 2000.0)
+
+In [7]: cspec.numchans
+Out[7]: 128
+
+In [8]: cspec.headers.keys()
+Out[8]: odict_keys(['PRIMARY', 'EBOUNDS', 'SPECTRUM', 'GTI'])
+
+In [9]: cspec.headers['PRIMARY']
+Out[9]: 
+SIMPLE  =                    T / file does conform to FITS standard             
+BITPIX  =                    8 / number of bits per data pixel                  
+NAXIS   =                    0 / number of data axes                            
+EXTEND  =                    T / FITS dataset may contain extensions            
+COMMENT   FITS (Flexible Image Transport System) format is defined in 'Astronomy
+COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H 
+CREATOR = 'GBM_SCI_Reader.pl v1.20' / Software and version creating file        
+FILETYPE= 'PHAII   '           / Name for this type of FITS file                
+FILE-VER= '1.0.0   '           / Version of the format for this filetype        
+TELESCOP= 'GLAST   '           / Name of mission/satellite                      
+INSTRUME= 'GBM     '           / Specific instrument used for observation       
+DETNAM  = 'NAI_01  '           / Individual detector name                       
+OBSERVER= 'Meegan  '           / GLAST Burst Monitor P.I.                       
+ORIGIN  = 'GIOC    '           / Name of organization making file               
+DATE    = '2021-12-11T16:17:47' / file creation date (YYYY-MM-DDThh:mm:ss UT)   
+DATE-OBS= '2021-12-11T12:20:50' / Date of start of observation                  
+DATE-END= '2021-12-11T14:16:47' / Date of end of observation                    
+TIMESYS = 'TT      '           / Time system used in time keywords              
+TIMEUNIT= 's       '           / Time since MJDREF, used in TSTART and TSTOP    
+MJDREFI =                51910 / MJD of GLAST reference epoch, integer part     
+MJDREFF = 7.428703703703703D-4 / MJD of GLAST reference epoch, fractional part  
+TSTART  =     660918050.115400 / [GLAST MET] Observation start time             
+TSTOP   =     660925007.106168 / [GLAST MET] Observation stop time              
+FILENAME= 'glg_cspec_n1_bn211211549_v00.pha' / Name of this file                
+DATATYPE= 'CSPEC   '           / GBM datatype used for this file                
+TRIGTIME=     660921004.650920 / Trigger time relative to MJDREF, double precisi
+OBJECT  = 'GRB211211549'       / Burst name in standard format, yymmddfff       
+RADECSYS= 'FK5     '           / Stellar reference frame                        
+EQUINOX =               2000.0 / Equinox for RA and Dec                         
+RA_OBJ  =              30.0000 / Calculated RA of burst                         
+DEC_OBJ =              -15.000 / Calculated Dec of burst                        
+ERR_RAD =                3.000 / Calculated Location Error Radius               
+INFILE01= 'glg_lutcs_nai_121126640_v00.fit' / Level 1 input lookup table file   
+INFILE02= 'GLAST_2021345_122000_VC09_GSPEC.0.00' / Level 0 input data file      
+INFILE03= 'GLAST_2021345_154000_VC09_GSPEC.0.00' / Level 0 input data file      
+INFILE04= 'GLAST_2021345_165000_VC09_GSPEC.0.00' / Level 0 input data file      
+CHECKSUM= 'KhZlNfZkKfZkKfZk'   / HDU checksum updated 2022-08-18T12:46:45       
+DATASUM = '0       '           / data unit checksum updated 2022-08-18T12:46:45 
+UREFTIME=      660921004.65092                                                  
+
+In [10]: cspec.headers['astropy.io.fits']
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+Input In [10], in <cell line: 1>()
+----> 1 cspec.headers['astropy.io.fits']
+
+KeyError: 'astropy.io.fits'
+
+In [11]: cspec.headers.astropy.io.fits
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Input In [11], in <cell line: 1>()
+----> 1 cspec.headers.astropy.io.fits
+
+AttributeError: 'collections.OrderedDict' object has no attribute 'astropy'
+
+In [12]: cspec.data
+Out[12]: <gbm.data.primitives.TimeEnergyBins at 0x7fb0a9fe9df0>
+
+In [13]: lc = cspec.to_lightcurve(time_range*(-100., 100.), energy_range*(100.0,
+    ...:  300.0))
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [13], in <cell line: 1>()
+----> 1 lc = cspec.to_lightcurve(time_range*(-100., 100.), energy_range*(100.0, 300.0))
+
+NameError: name 'time_range' is not defined
+
+In [14]: lc = cspec.to_lightcurve(time_range=(-100., 100.), energy_range=(100.0, 300.0))
+
+In [15]: lc.range
+Out[15]: (-103.6659060716629, 100.11375999450684)
+
+In [16]: lc.size
+Out[16]: 123
+
+In [17]: ls.counts
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [17], in <cell line: 1>()
+----> 1 ls.counts
+
+NameError: name 'ls' is not defined
+
+In [18]: lc.counts
+Out[18]: 
+array([ 689,  701,  689,  691,  630,  653,  692,  676,  672,  704,  684,
+        720,  692,  659,  711,  667,  707,  750,  709,  734,  676,  622,
+        704,  729,  717,  197,  826, 2075, 2953, 2530, 1259, 4854, 6056,
+       2804,  962,  984,  640,  314,  322,  293,  343,  578,  882, 1007,
+        950,  669,  796,  827, 1023,  781,  672,  416,  469,  339,  332,
+        361,  313,  306,  286,  407,  424,  365,  328,  288,  307,  281,
+        228,  244,  221,  235,  260,  236,  208,  230,  244,  219,  231,
+        231,  196,  186,  194,  176,  216,  193,  188,  216,  223,  200,
+        203,  201,  186,  169,  188,  182,  180,  183,  161,  164,  201,
+        178,  193,  150,  173,  165,  176,  168,  181,  182,  196,  152,
+        174,  188,  181,  181,  163,  189,  178,  180,  165,  165,  182,
+        169,  191], dtype=uint64)
+
+In [19]: from gbm.plot import Lightcurve
+
+In [20]: import matplotlib.pyplot as plt
+
+In [21]: lcplot = Lightcurve(data=lc)
+
+In [22]: plt.show()
+
+In [23]: lcplot.lightcurve.color
+Out[23]: '#394264'
+
+In [24]: lcplot.lightcurve.color = 'red'
+
+In [25]: spec = cspec.to_spectrum(time_range = (0.0, 40.0))
+
+In [26]: from gbm.plot import Spectrum
+
+In [27]: specplot = Spectrum(data=spec)
+
+In [28]: from gbm.plot import TTE
+---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+Input In [28], in <cell line: 1>()
+----> 1 from gbm.plot import TTE
+
+ImportError: cannot import name 'TTE' from 'gbm.plot' (/home/doc_ayush/gbm/lib/python3.9/site-packages/gbm/plot/__init__.py)
+
+In [29]: from gbm.data import TTE
+
+In [30]: tte = TTE.open(test_data_dir+'/glg_tte_n1_bn211211549_v00.fit')
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [30], in <cell line: 1>()
+----> 1 tte = TTE.open(test_data_dir+'/glg_tte_n1_bn211211549_v00.fit')
+
+NameError: name 'test_data_dir' is not defined
+
+In [31]: tte = TTE.open('/glg_tte_n1_bn211211549_v00.fit')
+---------------------------------------------------------------------------
+OSError                                   Traceback (most recent call last)
+Input In [31], in <cell line: 1>()
+----> 1 tte = TTE.open('/glg_tte_n1_bn211211549_v00.fit')
+
+File ~/gbm/lib/python3.9/site-packages/gbm/data/phaii.py:862, in TTE.open(cls, filename)
+    853 """Open a TTE FITS file and return the TTE object
+    854 
+    855 Args:
+   (...)
+    859     :class:`TTE`: The TTE object
+    860 """
+    861 obj = cls()
+--> 862 obj._file_properties(filename)
+    864 with fits.open(filename, mmap=False) as hdulist:
+    865     for hdu in hdulist:
+
+File ~/gbm/lib/python3.9/site-packages/gbm/data/data.py:64, in DataFile._file_properties(self, filename, ignore_file_check)
+     62 if not ignore_file_check:
+     63     if not os.path.isfile(filename):
+---> 64         raise IOError("File {0} does not exist".format(filename))
+     66 self._full_path = filename
+     67 self._dir = os.path.dirname(filename)
+
+OSError: File /glg_tte_n1_bn211211549_v00.fit does not exist
+
+In [32]: tte = TTE.open('glg_tte_n1_bn211211549_v00.fit')
+
+In [33]: tte.data
+Out[33]: <gbm.data.primitives.EventList at 0x7fb0a80e0e20>
+
+In [34]: from gbm.binning.unbinned import bin_by_time
+
+In [35]: phaii = tte.to_phaii(bin_by_time, 1.0, time_ref=0.0)
+
+In [36]: lc = phaii.to_lightcurve(time_range = (-100.0, 100.0), energy_range = (100.0, 300.0))
+
+In [37]: from gbm.plot import Lightcurve, Spectrum
+
+In [38]: import matplotlib.pyplot as plt
+
+In [39]: lcplot = lightcurve(data=lc)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [39], in <cell line: 1>()
+----> 1 lcplot = lightcurve(data=lc)
+
+NameError: name 'lightcurve' is not defined
+
+In [40]: lcplot = Lightcurve(data=lc)
+
+In [41]: plt.show()
+
+In [42]: lc_select = lc.slice(0.0. 25.0)
+  Input In [42]
+    lc_select = lc.slice(0.0. 25.0)
+                              ^
+SyntaxError: invalid syntax
+
+
+In [43]: lc_select = lc.slice(0.0, 25.0)
+
+In [44]: lcplot.add_selection(lc_select)
+
+In [45]: spec = phaii.to_spectrum(time_range = (0.0, 25.0))
+
+In [46]: specplot = Spectrum(data=spec)
+
+In [47]: spec_select = spec.slice(100.0, 300.0)
+
+In [48]: specplot.add_selection(spec_select)
+
+In [49]: # Define background model
+
+In [50]: from gbm.background import BackgroundFitter
+
+In [51]: from gbm.background.binned import Polynomial
+
+In [52]: backfitter = BackgroundFitter.from_phaii(phaii, Polynomial, [(-30.0, -2.0), (40.0, 100.0)]
+    ...: backfitters.fit(order=1)
+    ...: )
+  Input In [52]
+    backfitters.fit(order=1)
+    ^
+SyntaxError: invalid syntax
+
+
+In [53]: backfitter = BackgroundFitter.from_phaii(phaii, Polynomial, [(-30.0, -2.0), (40.0, 100.0)])
+
+In [54]: backfitters.fit(order=1)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [54], in <cell line: 1>()
+----> 1 backfitters.fit(order=1)
+
+NameError: name 'backfitters' is not defined
+
+In [55]: backfitter.fit(order=1)
+
+In [56]: bkgd_model = backfitter.interpolate_bins(lc.lo_edges, lc.hi_edges)
+
+In [57]: bkgd_model
+Out[57]: <gbm.background.background.BackgroundRates at 0x7fb0a2908910>
+
+In [58]: lc_bkgd = bkgd_model.integrate_energy(100.0, 300.0)
+
+In [59]: lcplot.set_background(lc_bkgd)
+
+In [60]: spec_bkgd = bkgd_model.integrate_time(0, 25.0)
+
+In [61]: specplot.set_background(spec_bkgd)
+
+In [62]: 
+
