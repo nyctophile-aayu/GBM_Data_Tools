@@ -15,40 +15,24 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	pip3 install --upgrade pip \
 	pip3 install /home/ubuntu/gbm_data_tools-1.1.1.tar.gz \
 	export GEOS_DIR=/usr/local (Use following location for geos directory)
+(If you already have it on your system, just set the environment variable GEOS_DIR to point to the location of libgeos_c and geos_c.h (if libgeos_c is in /usr/local/lib and geos_c.h is in /usr/local/include, set GEOS_DIR to /usr/local). )
+
 5. Install Dependencies of Basemap as mentioned in the link "https://matplotlib.org/basemap/users/installing.html#installation"
 6. Follow below commands & install these dependencies first: \
-	conda install astropy \
-	conda install matplotlib \
-	conda install numpy \
+	conda install astropy matplotlib numpy pandas scipy\
 	conda install python3 \
-	conda install scipy \
 	conda install astroid \
-	conda install coverage \
-	conda install cmake \
-	conda install cycler \
-	conda install cython \
-	conda install doxygen \
-	conda install flake8 \
-	conda install netCDF4 \
-	conda install owslib \
+	conda install coverage cmake cycler cython \
+	conda install doxygen flake8 netCDF4 owslib \
 	conda install proj \
 	conda install proj-bin \
-	conda install pillow \
-	conda install pyparsing \
-	conda install pyproj \
-	conda install pyshp \
-	conda install pytest \
-	conda install pylint \
-	conda install sphinx \
-	conda install typing \
+	conda install pillow pyparsing pyproj pyshp pytest pylint \
+	conda install sphinx typing \
 	conda install unittest2 \
 	conda install -c conda-forge basemap-data-hires \
 	sudo apt-get install python-software-properties (If error comes, proceed) \
 	sudo add-apt-repository ppa:ubuntugis/ppa \
 	conda install geos \
-	python -m pip install basemap-data \
-	python -m pip install basemap-data-hires \
-	python -m pip install basemap
 7. Now, extract basemap-1.3.6 and geos-3.11.1 by following below procedure only \
 	cd (Go to home) \
 	tar xvzf basemap-1.3.6.tar.gz \
@@ -83,13 +67,15 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	python -m pip install basemap-data-hires \
 	python -m pip install basemap \
 	python \
-	>>> from mpl_toolkits.basemap import Basemap (It shouldn't give error now, if comes then recheck the installation) \
-	>>> exit()
+	&nbsp;&nbsp;&nbsp;>>> from mpl_toolkits.basemap import Basemap (It shouldn't give error now, if comes then recheck the installation) \
+	&nbsp;&nbsp;&nbsp;>>> exit()
 9. Run examples in basemap-1.3.6 directory to test the installation of basemap \
 	cd basemap-1.3.6/ \
 	cd examples/ \
 	python simpletest.py (It will plot single graph) \
 	python run_all.py (It will plot 61 graphs to confirm the plot. Now to proceed to next graph, please close the earlier opened graphs and proceed further. In between, it may ask for Long, Lat and Location and Degree. So choose your lat, long, location and give any degree of your preference to plot the graph.)
-10. With this installation of GBM Data Tools is finished.
+10. Now, finally give the last shot with the Basemap
+	pip3 install /home/ubuntu/gbm_data_tools-1.1.1.tar.gz[basemap] \
+12. With this installation of GBM Data Tools is finished.
 
 Enjoy GBM Analysis!
