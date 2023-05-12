@@ -57,6 +57,10 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	cd geos-3.11.1 \
 	mkdir _build \
 	cd _build \
+	cmake \
+    	    -DCMAKE_BUILD_TYPE=Release \ \
+    	    -DCMAKE_INSTALL_PREFIX=/usr/local \ \
+    	    .. \
 	cmake \          
 	    - DCMAKE_BUILD_TYPE=Release \\
 	    - DCMAKE_INSTALL_PREFIX=/usr/local \\
