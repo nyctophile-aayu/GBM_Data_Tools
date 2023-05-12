@@ -32,7 +32,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	conda install -c conda-forge basemap-data-hires \
 	sudo apt-get install python-software-properties (If error comes, proceed) \
 	sudo add-apt-repository ppa:ubuntugis/ppa \
-	conda install geos \
+	conda install geos 
 7. Now, extract basemap-1.3.6 and geos-3.11.1 by following below procedure only \
 	cd (Go to home) \
 	tar xvzf basemap-1.3.6.tar.gz \
