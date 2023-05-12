@@ -58,13 +58,10 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	mkdir _build \
 	cd _build \
 	cmake \
-    	    -DCMAKE_BUILD_TYPE=Release \ \
+    	*Tabspace*-DCMAKE_BUILD_TYPE=Release \ \
     	    -DCMAKE_INSTALL_PREFIX=/usr/local \ \
     	    .. \
-	cmake \          
-	    - DCMAKE_BUILD_TYPE=Release \\
-	    - DCMAKE_INSTALL_PREFIX=/usr/local \\
-	    .. \
+	
 	make \
 	ctest (check success must be 100%) \
 	sudo make install \
