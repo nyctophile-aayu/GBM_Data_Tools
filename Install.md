@@ -45,7 +45,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	conda install -c conda-forge basemap-data-hires \
 	sudo apt-get install python-software-properties (If error comes, proceed) \
 	sudo add-apt-repository ppa:ubuntugis/ppa \
-	sudo apt-get install geos \
+	conda install geos \
 	python -m pip install basemap-data \
 	python -m pip install basemap-data-hires \
 	python -m pip install basemap
