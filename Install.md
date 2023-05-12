@@ -14,7 +14,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	conda activate gbm \
 	pip3 install --upgrade pip \
 	pip3 install /home/ubuntu/gbm_data_tools-1.1.1.tar.gz \
-	export GEOS_DIR=/usr/local (Use following location for geos directory)
+	export GEOS_DIR=/usr/local (Use following location for geos directory) \
 (If you already have it on your system, just set the environment variable GEOS_DIR to point to the location of libgeos_c and geos_c.h (if libgeos_c is in /usr/local/lib and geos_c.h is in /usr/local/include, set GEOS_DIR to /usr/local). )
 
 5. Install Dependencies of Basemap as mentioned in the link "https://matplotlib.org/basemap/users/installing.html#installation"
