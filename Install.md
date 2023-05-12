@@ -52,15 +52,15 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 7. Now, extract basemap-1.3.6 and geos-3.11.1 by following below procedure only \
 	cd (Go to home) \
 	tar xvzf basemap-1.3.6.tar.gz \
-	cd basemap-1.3.6/ \
+	cd basemap-1.3.6 \
 	tar xvzf geos-3.11.1.tar.bz2 (Or, manually extract geos-3.11.1 in basemap-1.3.6) \
-	cd geos-3.11.1/ \
+	cd geos-3.11.1 \
 	mkdir _build \
 	cd _build \
 	cmake \          
-	    - DCMAKE_BUILD_TYPE=Release \
-	    - DCMAKE_INSTALL_PREFIX=/usr/local \
-	    ..
+	    - DCMAKE_BUILD_TYPE=Release \\
+	    - DCMAKE_INSTALL_PREFIX=/usr/local \\
+	    .. \
 	make \
 	ctest (check success must be 100%) \
 	sudo make install \
