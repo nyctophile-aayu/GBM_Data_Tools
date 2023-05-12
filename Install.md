@@ -17,32 +17,32 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	export GEOS_DIR=/usr/local (Use following location for geos directory)
 5. Install Dependencies of Basemap as mentioned in the link "https://matplotlib.org/basemap/users/installing.html#installation"
 6. Follow below commands & install these dependencies first: \
-	conda install matplotlib \
-	conda install python3 \
-	conda install numpy \
 	conda install astropy \
+	conda install matplotlib \
+	conda install numpy \
+	conda install python3 \
 	conda install scipy \
+	conda install astroid \
+	conda install coverage \
+	conda install cmake \
+	conda install cycler \
+	conda install cython \
+	conda install doxygen \
+	conda install flake8 \
+	conda install netCDF4 \
+	conda install owslib \
 	conda install proj \
 	conda install proj-bin \
 	conda install pillow \
-	conda install unittest2 \
-	conda install astroid \
+	conda install pyparsing \
+	conda install pyproj \
+	conda install pyshp \
+	conda install pytest \
 	conda install pylint \
-	conda install flake8 \
 	conda install sphinx \
 	conda install typing \
-	conda install pytest \
-	conda install netCDF4 \
-	conda install coverage \
-	conda install cython \
-	conda install pyshp \
-	conda install pyproj \
-	conda install cycler \
-	conda install pyparsing \
+	conda install unittest2 \
 	conda install -c conda-forge basemap-data-hires \
-	conda install owslib \
-	conda install cmake \
-	conda install doxygen \
 	sudo apt-get install python-software-properties (If error comes, proceed) \
 	sudo add-apt-repository ppa:ubuntugis/ppa \
 	sudo apt-get install geos \
