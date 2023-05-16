@@ -1,0 +1,30 @@
+Once you are done installing the GBM data tools. Then, install ipython interfaces on terminal.
+
+1. Open Terminal. Now, follow the commands below:
+ - conda install python
+ - conda install ipython
+ - conda install notebook
+ - conda install -c conda-forge jupyter lab
+
+2. Open the Terminal in that folder in which GBM data is present. Then follow the steps below:
+ - python 
+ >>> import gbm
+ >>>
+ >>> exit()
+ 
+ - ipython
+ >>> import gbm
+ >>>
+ >>> exit()
+ 
+ If first line is running smooth as silk then you can be rest assured that your GBM Data Tools installation is successful.
+ 
+3. Now, in the same terminal follow below command:
+ - jupyter lab
+ 
+ Now, it will open set of notebooks on your default browser. Open a new notebook and then again run the previous command:
+ - import gbm
+ 
+ If it goes well then installation is complete.
+ 
+Enjoy GBM Analysis!
