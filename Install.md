@@ -75,7 +75,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	python simpletest.py (It will plot single graph) \
 	python run_all.py (It will plot 61 graphs to confirm the plot. Now to proceed to next graph, please close the earlier opened graphs and proceed further. In between, it may ask for Long, Lat and Location and Degree. So choose your lat, long, location and give any degree of your preference to plot the graph.)
 10. Now, finally give the last shot with the Basemap
-	pip3 install /home/ubuntu/gbm_data_tools-1.1.1.tar.gz[basemap] \
+	pip3 install /home/ubuntu/gbm_data_tools-1.1.1.tar.gz[basemap] 
 12. With this installation of GBM Data Tools is finished.
 
 Enjoy GBM Analysis!
