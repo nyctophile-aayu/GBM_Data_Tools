@@ -29,6 +29,8 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	conda install pillow pyparsing pyproj pyshp pytest pylint \
 	conda install sphinx typing \
 	conda install unittest2 \
+	pip3 install pyopenssl \
+	pip3 install requests[security] \
 	conda install -c conda-forge basemap-data-hires \
 	sudo apt-get install python-software-properties (If error comes, proceed) \
 	sudo add-apt-repository ppa:ubuntugis/ppa \
