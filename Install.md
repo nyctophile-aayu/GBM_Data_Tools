@@ -40,7 +40,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	cd (Go to home) \
 	tar xvzf basemap-1.3.6.tar.gz \
 	cd basemap-1.3.6 \
-	tar xvzf geos-3.11.1.tar.bz2 (Or, manually extract geos-3.11.1 in basemap-1.3.6) \
+	tar xvjf geos-3.11.2.tar.bz2 (Or, manually extract geos-3.11.1 in basemap-1.3.6) \
 	cd geos-3.11.1 \
 	mkdir _build \
 	cd _build \
