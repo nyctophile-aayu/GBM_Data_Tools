@@ -1,0 +1,130 @@
+>>> import gbm
+>>> from gbm import data
+
+TypeError                                 Traceback (most recent call last)
+Cell In[1], line 3
+      1 import numpy
+      2 import astropy
+----> 3 import healpy
+      4 import matplotlib
+      6 print("numpy version:", numpy.__version__)
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/healpy/__init__.py:95
+     92 from ._pixelfunc import ringinfo, pix2ring
+     94 from ._sphtools import rotate_alm
+---> 95 from .rotator import Rotator, vec2dir, dir2vec
+     96 from ._healpy_pixel_lib import UNSEEN
+     97 from .visufunc import (
+     98     mollview,
+     99     graticule,
+   (...)
+    107     azeqview,
+    108 )
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/healpy/rotator.py:36
+     33 x, y, z = np.eye(3)
+     34 astropy_ecliptic_frame = "BarycentricMeanEcliptic"
+     35 e2g = (
+---> 36     SkyCoord(
+     37         x=x,
+     38         y=y,
+     39         z=z,
+     40         frame=astropy_ecliptic_frame.lower(),
+     41         representation_type="cartesian",
+     42     )
+     43     .transform_to("galactic")
+     44     .data.to_cartesian()
+     45     .get_xyz()
+     46     .value
+     47 )
+     48 e2q = (
+     49     SkyCoord(
+     50         x=x,
+   (...)
+     59     .value
+     60 )
+     63 class ConsistencyWarning(Warning):
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/coordinates/sky_coordinate.py:675, in SkyCoord.transform_to(self, frame, merge_attributes)
+    671 generic_frame = GenericFrame(frame_kwargs)
+    673 # Do the transformation, returning a coordinate frame of the desired
+    674 # final type (not generic).
+--> 675 new_coord = trans(self.frame, generic_frame)
+    677 # Finally make the new SkyCoord object from the `new_coord` and
+    678 # remaining frame_kwargs that are not frame_attributes in `new_coord`.
+    679 for attr in (set(new_coord.get_frame_attr_names()) &
+    680              set(frame_kwargs.keys())):
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/coordinates/transformations.py:1479, in CompositeTransform.__call__(self, fromcoord, toframe)
+   1476             frattrs[inter_frame_attr_nm] = attr
+   1478     curr_toframe = t.tosys(**frattrs)
+-> 1479     curr_coord = t(curr_coord, curr_toframe)
+   1481 # this is safe even in the case where self.transforms is empty, because
+   1482 # coordinate objects are immutable, so copying is not needed
+   1483 return curr_coord
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/coordinates/transformations.py:1252, in BaseAffineTransform.__call__(self, fromcoord, toframe)
+   1250 def __call__(self, fromcoord, toframe):
+   1251     params = self._affine_params(fromcoord, toframe)
+-> 1252     newrep = self._apply_transform(fromcoord, *params)
+   1253     return toframe.realize_frame(newrep)
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/coordinates/transformations.py:1174, in BaseAffineTransform._apply_transform(self, fromcoord, matrix, offset)
+   1170 # Only do transform if matrix is specified. This is for speed in
+   1171 # transformations that only specify an offset (e.g., LSR)
+   1172 if matrix is not None:
+   1173     # Note: this applies to both representation and differentials
+-> 1174     rep = rep.transform(matrix)
+   1176 # TODO: if we decide to allow arithmetic between representations that
+   1177 # contain differentials, this can be tidied up
+   1178 if offset is not None:
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/coordinates/representation.py:1399, in CartesianRepresentation.transform(self, matrix)
+   1363 """
+   1364 Transform the cartesian coordinates using a 3x3 matrix.
+   1365 
+   (...)
+   1396                [ 3.        , 4.        ]] pc>
+   1397 """
+   1398 # erfa rxp: Multiply a p-vector by an r-matrix.
+-> 1399 p = erfa_ufunc.rxp(matrix, self.get_xyz(xyz_axis=-1))
+   1400 # transformed representation
+   1401 rep = self.__class__(p, xyz_axis=-1, copy=False)
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/coordinates/representation.py:1351, in CartesianRepresentation.get_xyz(self, xyz_axis)
+   1346         return np.moveaxis(self._xyz, self._xyz_axis, xyz_axis)
+   1348 # Create combined array.  TO DO: keep it in _xyz for repeated use?
+   1349 # But then in-place changes have to cancel it. Likely best to
+   1350 # also update components.
+-> 1351 return np.stack([self._x, self._y, self._z], axis=xyz_axis)
+
+File <__array_function__ internals>:200, in stack(*args, **kwargs)
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/units/quantity.py:1683, in Quantity.__array_function__(self, function, types, args, kwargs)
+   1670 # A function should be in one of the following sets or dicts:
+   1671 # 1. SUBCLASS_SAFE_FUNCTIONS (set), if the numpy implementation
+   1672 #    supports Quantity; we pass on to ndarray.__array_function__.
+   (...)
+   1680 # function is in none of the above, we simply call the numpy
+   1681 # implementation.
+   1682 if function in SUBCLASS_SAFE_FUNCTIONS:
+-> 1683     return super().__array_function__(function, types, args, kwargs)
+   1685 elif function in FUNCTION_HELPERS:
+   1686     function_helper = FUNCTION_HELPERS[function]
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/numpy/core/shape_base.py:471, in stack(arrays, axis, out, dtype, casting)
+    469 sl = (slice(None),) * axis + (_nx.newaxis,)
+    470 expanded_arrays = [arr[sl] for arr in arrays]
+--> 471 return _nx.concatenate(expanded_arrays, axis=axis, out=out,
+    472                        dtype=dtype, casting=casting)
+
+File <__array_function__ internals>:200, in concatenate(*args, **kwargs)
+
+File ~/anaconda3/envs/gbm/lib/python3.9/site-packages/astropy/units/quantity.py:1688, in Quantity.__array_function__(self, function, types, args, kwargs)
+   1686 function_helper = FUNCTION_HELPERS[function]
+   1687 try:
+-> 1688     args, kwargs, unit, out = function_helper(*args, **kwargs)
+   1689 except NotImplementedError:
+   1690     return self._not_implemented_or_raise(function, types)
+
+TypeError: concatenate() got an unexpected keyword argument 'dtype'
