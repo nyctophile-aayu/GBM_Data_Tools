@@ -1,0 +1,31 @@
+1. It is possible that when you are trying to install the GBM_Data_Tools without the Basemap even, you might encounter an error. \n
+ERROR: Could not build wheels for matplotlib, which is required to install pyproject.toml-based projects \n
+ERROR: Failed building wheel for matplotlib \n \n
+
+Try below steps, it might fix the issue. \n \n
+
+pip install --upgrade pip \n
+sudo apt-get install python3-dev python3-tk tk-dev \n
+pip install matplotlib\n
+
+
+
+Now, when you are trying to install the GBM_Data_Tools with Basemap, you might encounter an error as well. A similar error. \n
+ERROR: Failed building wheel for basemap \n
+Successfully built gbm-data-tools \n
+Failed to build basemap \n
+ERROR: Could not build wheels for basemap, which is required to install pyproject.toml-based projects \n \n
+
+Try below steps, it might fix the issue. \n \n
+
+sudo apt-get install python3-dev python3-tk tk-dev libfreetype6-dev \n
+pip install --upgrade setuptools wheel \n
+pip install matplotlib==3.4.3 \n
+sudo apt-get install python3-matplotlib \n
+sudo apt-get install libgeos-dev libproj-dev \n
+conda install -c conda-forge basemap \n
+conda install -c conda-forge cartopy \n
+
+
+This will fix the issue.
+
