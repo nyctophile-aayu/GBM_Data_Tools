@@ -23,7 +23,8 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 	conda install python3 \
 	conda install astroid \
 	conda install coverage cmake cycler cython \
-	conda install doxygen flake8 netCDF4 owslib \
+	conda install flake8 netCDF4 owslib \
+	conda install -c conda-forge doxygen \
 	conda install proj \
 	conda install proj-bin \
 	conda install pillow pyparsing pyproj pyshp pytest pylint \
