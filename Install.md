@@ -80,7 +80,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 10. Now, finally give the last shot with the Basemap \
 	conda update wheel \
 	sudo apt-get install git \
-	pip3 install /home/ubuntu/gbm_data_tools-1.1.1.tar.gz[basemap] 
+	pip3 install /home/lonewolf/gbm_data_tools-1.1.1.tar.gz[basemap] 
 12. With this installation of GBM Data Tools is finished.
 
 Enjoy GBM Analysis!
