@@ -9,7 +9,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
  	python3 -m venv gbm \
 	source gbm/bin/activate \
 	source ~/.bashrc \
-	conda create --name gbm python=3.9 numpy=1.18.1 \ (Make sure numpy version must be in between 1.17.3 and 1.23.5)
+	conda create --name gbm python=3.9 numpy=1.18.1 \ (Make sure numpy version must be in between 1.17.3 and 1.23.5) \
 	source activate gbm \
 	source ~/.bashrc \
 	conda activate gbm \
