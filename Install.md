@@ -5,7 +5,7 @@ SUCCESS CODES TO INSTALL GBM_DATA_TOOLS WITH BASEMAP
 2. Install Conda from "https://docs.anaconda.com/anaconda/install/index.html"
 3. Download GBM_Data_Tools from "https://fermi.gsfc.nasa.gov/ssc/data/analysis/gbm/gbm_data_tools/gdt-docs/install.html"
 4. Follow instructions of installation before GBM_Data_Tools[Basemap] & activate GBM environment using conda \
-	conda update -n base -c defaults conda (To update conda)
+	conda update -n base -c defaults conda (To update conda) \
  	python3 -m venv gbm \
 	source gbm/bin/activate \
 	source ~/.bashrc \
